@@ -14,7 +14,9 @@ class TicketController extends Controller
      */
     public function index(): View
     {
-        return view('tickets.index');
+        return view('tickets.index', [
+            'tickets' => Ticket::with('user')->latest()->get()
+        ]);
     }
 
     /**
